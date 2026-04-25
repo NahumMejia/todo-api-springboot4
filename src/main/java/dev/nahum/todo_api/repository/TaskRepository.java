@@ -1,0 +1,7 @@
+package dev.nahum.todo_api.repository;
+
+import dev.nahum.todo_api.model.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TaskRepository extends JpaRepository<Task,Long> {
+}
