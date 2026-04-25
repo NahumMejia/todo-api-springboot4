@@ -5,6 +5,7 @@ import dev.nahum.todo_api.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
@@ -18,11 +19,16 @@ public class TaskService {
     }
 
     public Task updateTask(Task task){
+        findById(task.getId());
         return taskRepository.save(task);
     }
 
-    public void deleteTask(Long id){
+    public void deleteTaskById(Long id){
         taskRepository.deleteById(id);
+    }
+
+    public List<Task> findAll(){
+        return taskRepository.findAll();
     }
 
     public Task findById(Long id){
