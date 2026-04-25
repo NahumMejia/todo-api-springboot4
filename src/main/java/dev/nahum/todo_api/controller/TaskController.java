@@ -16,30 +16,29 @@ public class TaskController {
 
     private final TaskService taskService;
 
-    @PostMapping()
-    public Task createTask(Task task){
+    @PostMapping
+    public Task createTask(@RequestBody Task task){
         return taskService.createTask(task);
     }
 
-    @PutMapping()
-    public Task updateTask(Task task){
+    @PutMapping("/{id}")
+    public Task updateTask(@PathVariable Long id, @RequestBody Task task){
         return taskService.updateTask(task);
     }
 
-    @DeleteMapping()
-    public ResponseEntity<Void> deleteById(Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
         taskService.deleteTaskById(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping()
+    @GetMapping
     public List<Task> findAll(){
         return taskService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Task findById(Long id){
+    public Task findById(@PathVariable Long id){
         return taskService.findById(id);
     }
-
 }
